@@ -32,15 +32,16 @@ pub enum Action {
 }
 
 #[derive(Debug, StructOpt)]
-#[structopt(
-    name = "Rusty Journal",
-    about = "A command line to-do app written in Rust"
-)]
+#[structopt(name = "Rust Journal", about = "测试rust")]
 pub struct CommandLineArgs {
     #[structopt(subcommand)]
     pub action: Action,
 
-    /// Use a different journal file.
+    /// 在哪个目录中找.
     #[structopt(parse(from_os_str), short, long)]
-    pub journal_file: Option<PathBuf>,
+    pub dir: Option<PathBuf>,
+
+    /// 你想找到哪个文件.
+    #[structopt(parse(from_os_str), short, long)]
+    pub target_file: Option<PathBuf>,
 }
