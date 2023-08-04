@@ -24,7 +24,15 @@ fn main() -> anyhow::Result<()> {
         .expect("请输入目标文件");
 
     let c = Config::new(target_file, dir.clone());
-    find::read_dir(&dir, &c);
+    find::read_dir(&dir, &c)?;
+    /* match res {
+        Ok(()) => {
+            println!("it is ok");
+        },
+        Err(e) => {
+            println!("{}", e);
+        }
+    } */
     /* match action {
         Add { text } => tasks::add_task(journal_file, Task::new(text)),
         List => tasks::list_tasks(journal_file),
